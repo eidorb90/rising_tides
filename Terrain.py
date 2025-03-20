@@ -10,6 +10,7 @@ import numpy as np
 from collections import deque
 from PIL import Image, ImageDraw
 
+
 class Terrain:
     def __init__(self):
         self.size = None
@@ -18,6 +19,7 @@ class Terrain:
         self.water_df = None
         self.water_level = None
         self.max_elevation = None
+        self.min_elevation = None
 
     def load_data_from_file(self, file_path: str):
         """Loads data from a .terrain file into a Pandas Dataframe. While also creating a list for the water sources
@@ -79,6 +81,7 @@ class Terrain:
             self.water_sources = water_sources
             self.water_df = water_df
             self.max_elevation = self.grid.max().max()
+            self.min_elevation = self.grid.min().min()
             
             # Make sure water source coordinates are valid before getting water level
             if 0 <= row < actual_rows and 0 <= col < actual_cols:
@@ -152,10 +155,16 @@ class Terrain:
         # - Blue for water
         # - Green to yellow to red for increasing elevation
         terrain_cmap = {
-            'water': (0, 0, 255),      # Blue
-            'low': (0, 200, 0),        # Green
-            'mid': (255, 255, 0),      # Yellow
-            'high': (255, 0, 0)        # Red
+            'water': (0, 0, 255),        # Blue for water
+            'low_low': (0, 150, 0),      # Dark green
+            'low_mid': (0, 200, 0),      # Medium green
+            'low_high': (100, 220, 0),   # Light green
+            'mid_low': (180, 220, 0),    # Yellow-green
+            'mid_mid': (255, 255, 0),    # Yellow
+            'mid_high': (255, 200, 0),   # Yellow-orange
+            'high_low': (255, 150, 0),   # Orange
+            'high_mid': (255, 100, 0),   # Dark orange
+            'high_high': (255, 0, 0)     # Red
         }
 
         # Normalize terrain values for coloring
@@ -185,15 +194,24 @@ class Terrain:
                         elevation = self.grid.iloc[row, col]
                         norm_elevation = (elevation - terrain_min) / terrain_range
 
-                        if norm_elevation < 0.33:
-                            # Low elevation (green)
-                            pixels[col, row] = terrain_cmap['low']
-                        elif norm_elevation < 0.67:
-                            # Medium elevation (yellow)
-                            pixels[col, row] = terrain_cmap['mid']
+                        if norm_elevation < 0.1:
+                            pixels[col, row] = terrain_cmap['low_low']
+                        elif norm_elevation < 0.2:
+                            pixels[col, row] = terrain_cmap['low_mid']
+                        elif norm_elevation < 0.3:
+                            pixels[col, row] = terrain_cmap['low_high']
+                        elif norm_elevation < 0.4:
+                            pixels[col, row] = terrain_cmap['mid_low']
+                        elif norm_elevation < 0.5:
+                            pixels[col, row] = terrain_cmap['mid_mid']
+                        elif norm_elevation < 0.6:
+                            pixels[col, row] = terrain_cmap['mid_high']
+                        elif norm_elevation < 0.7:
+                            pixels[col, row] = terrain_cmap['high_low']
+                        elif norm_elevation < 0.85:
+                            pixels[col, row] = terrain_cmap['high_mid']
                         else:
-                            # High elevation (red)
-                            pixels[col, row] = terrain_cmap['high']
+                            pixels[col, row] = terrain_cmap['high_high']
 
             # Add water level text to the image
             draw = ImageDraw.Draw(img)

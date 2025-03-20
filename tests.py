@@ -8,12 +8,15 @@ from Terrain import Terrain
 
 # set the file to be loaded into the Terrain object
 crater_lake = 'CraterLake.terrain'
-bay_area    = 'terrain/terrain/BayArea.terrain'
+bay_area    = 'terrain/terrain/MarsCraters.terrain'
+telka       = 'terrain/terrain/TelkaAMaui.terrain'
+miami       = 'terrain/terrain/Miami.terrain'
+iceland     = 'terrain/terrain/Iceland.terrain'
 
 
 # Initialize the object and load the data 
 terrain = Terrain()
-terrain.load_data_from_file(bay_area)
+terrain.load_data_from_file(iceland)
 
 # Print the object(to make sure the data is loaded correctly)
 # print(terrain)
@@ -27,6 +30,9 @@ terrain.load_data_from_file(bay_area)
 
 # testing the generate gif function
 terrain.generate_gif(
-    output_path="bay_area.gif",
+    output_path="iceland.gif",
     step=100
 )
+
+# test elevations 
+# print(terrain.min_elevation, terrain.max_elevation)
