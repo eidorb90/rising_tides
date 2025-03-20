@@ -29,8 +29,6 @@ git clone https://github.com/eidorb90/rising_tides.git
 cd rising-tides
 
 # Install dependencies
-pip install -r requirements.txt
-# Or using newer package managers
 uv pip install .
 ```
 
