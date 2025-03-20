@@ -29,6 +29,8 @@ git clone https://github.com/eidorb90/rising_tides.git
 cd rising-tides
 
 # Install dependencies
+pip install -r requirements.txt
+# Or using newer package managers
 uv pip install .
 ```
 
@@ -108,11 +110,16 @@ The project includes several example terrain files:
 - `TeIkaAMaui.terrain`
 - `Miami.terrain`
 - `Iceland.terrain`
-- ETC
 
 ## License
 
-[Your chosen license]
+This project is licensed under the GNU General Public License v3.0 - see the [LICENSE](LICENSE) file for details.
+
+This means:
+- You are free to use, modify, and distribute this software
+- If you distribute modified versions, you must make your source code available
+- Any derivative works must also be licensed under GPL v3.0
+- Full details are in the LICENSE file
 
 ## Acknowledgments
 
