@@ -159,7 +159,7 @@ class Terrain:
                 if (0 <= neighbor_row < num_rows and 0 <= neighbor_col < num_cols):
                     # check to make sure that its not already flooded and its elevation is <= water_level
                     if not flooded.iloc[neighbor_row, neighbor_col] and self.grid.iloc[neighbor_row, neighbor_col] <= water_level:
-                        # mark as flooeded and add to Queue
+                        # mark as flooded and add to Queue
                         flooded.iloc[neighbor_row, neighbor_col] = True
                         queue.append((neighbor_row, neighbor_col))
 
