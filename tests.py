@@ -12,7 +12,7 @@ We check the different datasets that we have in different ways.
 from Terrain import Terrain
 
 # set the file to be loaded into the Terrain object
-crater_lake = 'CraterLake.terrain'
+crater_lake = 'terrain/terrain/CraterLake.terrain'
 bay_area    = 'terrain/terrain/MarsCraters.terrain'
 telka       = 'terrain/terrain/TelkaAMaui.terrain'
 miami       = 'terrain/terrain/Miami.terrain'

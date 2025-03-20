@@ -261,7 +261,7 @@ class Terrain:
 
         # Save frames as GIF
         frames[0].save(
-            output_path,
+            f"gifs/{output_path}",
             format='GIF',
             append_images=frames[1:],
             save_all=True,
@@ -269,7 +269,7 @@ class Terrain:
             loop=0
         )
         
-        print(f"GIF saved to {output_path}")
+        print(f"GIF saved to gifs/{output_path}")
         return output_path
 
         
