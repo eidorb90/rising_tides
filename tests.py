@@ -1,7 +1,12 @@
 """
 Brodie Rogers 
+<brodie.rogers@cune.students.edu>
+
 tests.py
 
+
+Testing file for the Terrain class I wrote. 
+We check the different datasets that we have in different ways.
 """
 
 from Terrain import Terrain

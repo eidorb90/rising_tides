@@ -1,8 +1,19 @@
-""" 
+"""
 Brodie Rogers 
+<brodie.rogers@cune.students.edu>
+
 Terrain.py
 
 
+This file contains the Terrain class for simulating water flow over terrain.
+The class loads terrain data from .terrain files, processes the data, and
+provides methods for flooding simulation and visualization.
+
+Key features:
+- Loading terrain data from .terrain files
+- Simulating flood patterns at different water levels
+- Generating GIFs to visualize flooding progression
+- Tracking water sources and their propagation
 """
 
 import pandas as pd
@@ -12,6 +23,23 @@ from PIL import Image, ImageDraw
 
 
 class Terrain:
+    """
+    A class for modeling and simulating water flow over terrain.
+    
+    This class loads terrain data from .terrain files, processes elevation data, 
+    tracks water sources, and simulates how water would flood the terrain at
+    different water levels. It also provides functionality to visualize the 
+    flooding process through GIF generation.
+    
+    Attributes:
+        size (tuple): Dimensions of the terrain grid (rows, columns)
+        grid (DataFrame): Pandas DataFrame containing elevation data
+        water_sources (list): List of (x, y) coordinates of water sources
+        water_df (DataFrame): Boolean DataFrame marking water source locations
+        water_level (float): Elevation of the initial water source
+        max_elevation (float): Maximum elevation in the terrain
+        min_elevation (float): Minimum elevation in the terrain
+    """
     def __init__(self):
         self.size = None
         self.grid = None
@@ -91,6 +119,14 @@ class Terrain:
                 self.water_level = 0  # Default value
 
     def flood_terrain(self, water_level: float):
+        """Simulates flooding the set terrain grid at a certain elevation.
+
+        Args:
+            water_level (float): This is the elevation to simulate the water at.
+
+        Returns:
+            flooded (Pandas DataFrame): Pandas DataFrame that tracks the 'flooded' tiles.
+        """
         # Create a copy of water_df to track flooded cells for this water level
         flooded = self.water_df.copy()
         
