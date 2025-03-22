@@ -9,6 +9,7 @@ Rising Tides loads terrain elevation data from `.terrain` files and simulates ho
 - Loading and processing terrain elevation data
 - Simulating flood patterns at various water levels
 - Generating animated GIFs to visualize flooding progression
+- Generate static heatmap images to show the elevation
 - Tracking water sources and their propagation through breadth-first search algorithms
 
 ## Features
@@ -16,6 +17,7 @@ Rising Tides loads terrain elevation data from `.terrain` files and simulates ho
 - **Terrain Loading**: Parse and load terrain data from standardized `.terrain` files
 - **Flood Simulation**: Calculate water propagation using a breadth-first search algorithm
 - **Visualization**: Generate color-coded GIF animations showing flooding patterns over time
+- **Heatmap Generation**: Generate color-coded Heatmap Images showing the elevations of the desired terrain
 - **Multiple Water Sources**: Support for terrain with multiple water sources
 - **Customizable Parameters**: Adjust simulation parameters like water level increment and animation speed
 
@@ -103,6 +105,7 @@ The terrain data used in this project comes from various sources:
 ## Example Terrains
 
 The project includes several example terrain files:
+
 - `CraterLake.terrain`
 - `MarsCraters.terrain`
 - `TeIkaAMaui.terrain`
@@ -114,6 +117,7 @@ The project includes several example terrain files:
 This project is licensed under the GNU General Public License v3.0 - see the [LICENSE](LICENSE) file for details.
 
 This means:
+
 - You are free to use, modify, and distribute this software
 - If you distribute modified versions, you must make your source code available
 - Any derivative works must also be licensed under GPL v3.0
